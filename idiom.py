@@ -4,6 +4,7 @@ from rpyc import connect
 
 bv: BinaryView = connect('localhost', 8888).root.bv
 logger: Function = bv.get_functions_by_name('logger')[0]
+print(hex(logger.start))
 
 for caller in logger.caller_sites:
     arg2 = caller.function.get_parameter_at(caller.address, None, 2)
