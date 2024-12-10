@@ -13,5 +13,5 @@ for caller in logger.caller_sites:
 
 main: Function = bv.get_functions_by_name('main')[0]
 
-for call in main.call_sites:
-    arg0 = main.get_parameter_at(call.address, None, 0)
+for call, callee in zip(main.call_sites, main.callees):
+    print(call, callee)
